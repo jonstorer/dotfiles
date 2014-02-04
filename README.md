@@ -1,4 +1,4 @@
-# Crowdtap dotfile config
+# Shake dotfile config
 
 ## Why a common dotfile config?
 
