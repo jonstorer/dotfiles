@@ -29,6 +29,8 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'rking/ag.vim'
 
 " COLORS
 
