@@ -175,6 +175,14 @@ map <Leader>b :w<CR> :call ScreenShellSend("break ".@% . ':' . line('.'))<CR>
 nnoremap <silent> <Leader>f :CommandT<CR>
 map <Leader>v :vs<CR>
 
+
+"
+"  Keybindings
+"
+" Copy current file path to system pasteboard
+map <silent> <D-C> :let @* = expand("%")<CR>:echo "Copied: ".expand("%")<CR>
+map <leader>C :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".expand("%").":".line(".")<CR>
+
 "
 " ctrl+p
 "
