@@ -108,6 +108,20 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so
 let NERDTreeHighlightCursorline=1
 let NERDTreeShowBookmarks=1
 let NERDTreeShowFiles=1
+" File tree browser
+map \ :NERDTreeToggle<CR>
+" File tree browser showing current file - pipe (shift-backslash)
+map \| :NERDTreeFind<CR>
+
+
+"
+"  Nerd commenter
+"
+" Comment/uncomment lines
+map <leader>/   <plug>NERDCommenterToggle
+map <D-/>       <plug>NERDCommenterToggle
+imap <D-/>      <Esc><plug>NERDCommenterToggle i
+
 
 
 "
@@ -172,12 +186,25 @@ map <Leader>c :ScreenShellVertical bundle exec rails c<CR>
 map <Leader>r :w<CR> :call ScreenShellSend("rspec ".@% . ':' . line('.'))<CR>
 map <Leader>e :w<CR> :call ScreenShellSend("cucumber --format=pretty ".@% . ':' . line('.'))<CR>
 map <Leader>b :w<CR> :call ScreenShellSend("break ".@% . ':' . line('.'))<CR>
+
+" Search using Ag
 nnoremap <Leader>f :Ag 
+
+" Vertical Split
+map <Leader>v :vs<CR>
+
+"
+"  Keybindings
+"
+" Copy current file path to system pasteboard
+map <silent> <D-C> :let @* = expand("%")<CR>:echo "Copied: ".expand("%")<CR>
+map <leader>C :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".expand("%").":".line(".")<CR>
+map <leader>c :let @* = expand("%")<CR>:echo "Copied: ".expand("%")<CR>
+
 
 "
 " ctrl+p
 "
-
 map <F6> :CtrlPClearAllCaches <CR>
 map <Leader>m :CtrlPMRU<cr>
 
