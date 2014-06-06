@@ -182,6 +182,8 @@ map <Leader>v :vs<CR>
 " Copy current file path to system pasteboard
 map <silent> <D-C> :let @* = expand("%")<CR>:echo "Copied: ".expand("%")<CR>
 map <leader>C :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".expand("%").":".line(".")<CR>
+map <leader>c :let @* = expand("%")<CR>:echo "Copied: ".expand("%")<CR>
+
 
 "
 " ctrl+p
