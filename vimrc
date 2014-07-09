@@ -204,3 +204,20 @@ map <Leader>m :CtrlPMRU<cr>
 if filereadable(expand("~/.custom.vim"))
   source ~/.custom.vim
 endif
+
+
+"
+" Remove Trailing whitespace when saving a vim buffer
+"
+function! StripTrailingWhitespace()
+  let save_cursor = getpos(".")
+  %s/\s\+$//e
+  call setpos('.', save_cursor)
+endfunction
+" c style files
+autocmd BufWritePre *.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
+" web development style files
+autocmd BufWritePre *.coffee,*.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature call StripTrailingWhitespace()
+" java & php
+autocmd BufWritePre *.java,*.php call StripTrailingWhitespace()
+
