@@ -22,3 +22,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.aliasrc" ]]; then
 fi
 
 # Customize to your needs...
+export PATH=~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools/proguard/bin:$PATH
+
+#Allow History Substring Search With Up/Down nd UP and DOWN arrow keys
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
