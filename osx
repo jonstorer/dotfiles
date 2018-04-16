@@ -288,7 +288,7 @@ defaults write com.google.iterm2 WindowStyle -int 0
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+hash tmutil &> /dev/null && sudo tmutil disable
 
 ###############################################################################
 # Dashboard, TextEdit, and Disk Utility                                       #
