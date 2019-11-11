@@ -1,11 +1,9 @@
-# Shake dotfile config
+# Dotfile config
 
 ## Why a common dotfile config?
 
 * To be on the same page
 * Unleash TMUX and VIM productivity power
-
-![Hamburger](http://www.passportmagazine.com/blog/uploads/DeathbyHamburger.jpg)
 
 ## What's inside?
 * A solid VIM config
