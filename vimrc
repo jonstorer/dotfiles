@@ -116,6 +116,7 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so
 let NERDTreeHighlightCursorline=1
 let NERDTreeShowBookmarks=1
 let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
 " File tree browser
 map \ :NERDTreeToggle<CR>
 " File tree browser showing current file - pipe (shift-backslash)
