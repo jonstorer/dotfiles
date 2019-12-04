@@ -231,9 +231,7 @@ autocmd BufWritePre *.coffee,*.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*
 " java & php
 autocmd BufWritePre *.java,*.php call StripTrailingWhitespace()
 
+" tell vim that tmate.conf has tmux style
 au BufNewFile,BufRead,BufReadPost tmate.conf set syntax=tmux
-
-
-
 
 set nowrap
