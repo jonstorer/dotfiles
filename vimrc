@@ -8,18 +8,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Vim Plugins
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'Lokaltog/vim-powerline'
+Plugin 'powerline/powerline'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ervandew/screen'
 Plugin 'ervandew/supertab'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'groenewege/vim-less'
-Plugin 'kchmck/vim-coffee-script'
+"Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'nviennot/molokai'
-Plugin 'quentindecock/vim-cucumber-align-pipes'
+"Plugin 'quentindecock/vim-cucumber-align-pipes'
 Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
@@ -34,7 +35,7 @@ Plugin 'rking/ag.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'briancollins/vim-jst'
-Plugin 'blockloop/vim-swigjs'
+"Plugin 'blockloop/vim-swigjs'
 Plugin 'spf13/vim-autoclose'
 
 call vundle#end()
@@ -229,5 +230,8 @@ autocmd BufWritePre *.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
 autocmd BufWritePre *.coffee,*.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature call StripTrailingWhitespace()
 " java & php
 autocmd BufWritePre *.java,*.php call StripTrailingWhitespace()
+
+" tell vim that tmate.conf has tmux style
+au BufNewFile,BufRead,BufReadPost tmate.conf set syntax=tmux
 
 set nowrap
