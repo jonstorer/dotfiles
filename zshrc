@@ -29,5 +29,9 @@ bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
 export PATH="$HOME/.bin:$PATH"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - --no-rehash)"
+
+export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
