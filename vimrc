@@ -31,6 +31,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'briancollins/vim-jst'
 Plugin 'spf13/vim-autoclose'
+Plugin 'hoffstein/vim-tsql'
 
 call vundle#end()
 filetype plugin indent on

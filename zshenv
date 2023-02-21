@@ -75,8 +75,3 @@ fi
 # Add a local themes directory
 #
 fpath=($fpath ${ZDOTDIR:-$HOME}/.zsh-themes)
-
-#
-# Configure BrewCask
-#
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"

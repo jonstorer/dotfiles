@@ -14,6 +14,14 @@
   #export PATH=$RBENV_ROOT/bin:/opt/rbenv/bin/rbenv:$PATH
   #eval "$(rbenv init -)"
 #fi
+#
+#
+#
+#
+
+if [[ -s "/opt/homebrew/bin/brew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 if [[ -s "${ZDOTDIR:-$HOME}/.tmuxinator/scripts/tmuxinator" ]]; then
   source "${ZDOTDIR:-$HOME}/.tmuxinator/scripts/tmuxinator"
