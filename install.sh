@@ -23,7 +23,7 @@ CWD=$(pwd);
 
 for dotfile in "${dotfiles[@]}"; do
   if [ -e "$HOME/.$dotfile" ]; then
-    if [ "$(realpath "$HOME/.$dotfile")" -ne "$CWD/$dotfile" ]; then
+    if [ "$(realpath "$HOME/.$dotfile")" != "$CWD/$dotfile" ]; then
       mv "$HOME/.$dotfile" "$HOME/.$dotfile.bak"
     fi
   fi
