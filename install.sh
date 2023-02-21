@@ -24,12 +24,9 @@ CWD=$(pwd);
 for dotfile in "${dotfiles[@]}"; do
   if [ -e "$HOME/.$dotfile" ]; then
     if [ "$(realpath "$HOME/.$dotfile")" -ne "$CWD/$dotfile" ]; then
-      echo "$(realpath "$HOME/.$dotfile")"
-      echo "$CWD/$dotfile"
-      #mv "$HOME/.$dotfile" "$HOME/.$dotfile.bak"
-      #ln -s "$CWD/$dotfile" "$HOME/.$dotfile"
+      mv "$HOME/.$dotfile" "$HOME/.$dotfile.bak"
     fi
-  else
-    ln -s "$CWD/$dotfile" "$HOME/.$dotfile"
   fi
+
+  ln -s "$CWD/$dotfile" "$HOME/.$dotfile"
 done
