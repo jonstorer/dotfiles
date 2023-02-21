@@ -19,7 +19,7 @@ dotfiles+=(zshrc)
 
 #echo "${dotfiles[@]}"
 
-CWD=$(shell pwd);
+CWD=$(pwd);
 
 for dotfile in "${dotfiles[@]}"; do
   [ -e "$HOME/.$dotfile" ] && mv "$HOME/.$dotfile" "$HOME/.$dotfile.bak"
