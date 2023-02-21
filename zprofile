@@ -2,9 +2,7 @@
 # Executes commands at login pre-zshrc.
 #
 
-if [[ -s "/opt/homebrew/bin/brew" ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+[ -s "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 #if [[ -s "${ZDOTDIR:-$HOME}/.aliasrc" ]]; then
   #source "${ZDOTDIR:-$HOME}/.aliasrc"
