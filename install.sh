@@ -22,11 +22,9 @@ dotfiles+=(zshrc)
 CWD=$(pwd);
 
 for dotfile in "${dotfiles[@]}"; do
-  if [ -e "$HOME/.$dotfile" ]; then
-    if [ "$(realpath "$HOME/.$dotfile")" != "$CWD/$dotfile" ]; then
-      mv "$HOME/.$dotfile" "$HOME/.$dotfile.bak"
-    fi
+  if [ -e "$HOME/.$dotfile" ] && [ "$(realpath "$HOME/.$dotfile")" != "$CWD/$dotfile" ]; then
+    mv "$HOME/.$dotfile" "$HOME/.$dotfile.bak"
   fi
 
-  ln -s "$CWD/$dotfile" "$HOME/.$dotfile"
+  [ ! -e "$HOME/.$dotfile" ] && ln -s "$CWD/$dotfile" "$HOME/.$dotfile"
 done
