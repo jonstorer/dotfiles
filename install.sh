@@ -29,5 +29,7 @@ for dotfile in "${dotfiles[@]}"; do
       #mv "$HOME/.$dotfile" "$HOME/.$dotfile.bak"
       #ln -s "$CWD/$dotfile" "$HOME/.$dotfile"
     fi
+  else
+    ln -s "$CWD/$dotfile" "$HOME/.$dotfile"
   fi
 done
