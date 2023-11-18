@@ -32,15 +32,15 @@ if [[ -s "$HOME/Library/Android" ]]; then
   export PATH=$HOME/Library/Android/sdk/tools/proguard/bin:$PATH
 fi
 
-if [[ -s "$HOME/.rbenv" ]]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init - --no-rehash)"
-fi
+#if [[ -s "$HOME/.rbenv" ]]; then
+#  export PATH="$HOME/.rbenv/bin:$PATH"
+#  eval "$(rbenv init - --no-rehash)"
+#fi
 
-if [[ -s "$HOME/.nodenv" ]]; then
-  export PATH="$HOME/.nodenv/bin:$PATH"
-  eval "$(nodenv init -)"
-fi
+#if [[ -s "$HOME/.nodenv" ]]; then
+#  export PATH="$HOME/.nodenv/bin:$PATH"
+#  eval "$(nodenv init -)"
+#fi
 
 if [[ -s "$HOME/.bin" ]]; then
   export PATH="$HOME/.bin:$PATH"
