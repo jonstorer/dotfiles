@@ -29,11 +29,7 @@ Shell, editor, and system configuration. Works together with the [laptop](https:
    make install
    ```
 
-3. Ensure asdf is loaded: if laptop appended asdf to `~/.zshrc`, it will be overwritten by the dotfiles symlink. Add to `~/.environmentrc` (sourced by `zprofile`):
-
-   ```sh
-   . "$(brew --prefix asdf)/libexec/asdf.sh"
-   ```
+3. Dotfiles loads asdf from `zprofile` and provides `~/.asdfrc` (`.nvmrc` / `.node-version` support). No extra setup needed.
 
 ### Standalone (without laptop)
 
@@ -52,9 +48,8 @@ Shell, editor, and system configuration. Works together with the [laptop](https:
 
 | Step | What happens |
 |------|---------------|
-| 1. Laptop | Installs tools (vim, tmux, zsh, asdf, Node) and may append asdf to `~/.zshrc`. |
-| 2. Dotfiles `make install` | Symlinks dotfiles into `$HOME`, overwriting `~/.zshrc`. |
-| 3. Asdf | If laptop ran first, its asdf block is gone. Put asdf in `~/.environmentrc` instead. |
+| 1. Laptop | Installs tools (vim, tmux, zsh, asdf, Node). Does not modify .zshrc or .asdfrc (managed by dotfiles). |
+| 2. Dotfiles `make install` | Symlinks configs, loads asdf from zprofile, provides ~/.asdfrc. |
 
 ## Updating
 
