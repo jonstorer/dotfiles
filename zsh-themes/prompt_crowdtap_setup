@@ -23,11 +23,6 @@ function prompt_crowdtap_precmd {
     git-info
   fi
 
-  # Get Ruby information.
-  if (( $+functions[ruby-info] )); then
-    ruby-info
-  fi
-
   # Get Node information.
   if (( $+functions[node-info] )); then
     node-info
@@ -69,7 +64,6 @@ function prompt_crowdtap_setup {
   fi
 
   zstyle ':prezto:module:node:info:version' format 'node:%v'
-  zstyle ':prezto:module:ruby:info:version' format 'ruby:%v'
 
   zstyle ':prezto:module:editor:info:completing' format '%B${_prompt_crowdtap_colors[4]}...%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' ${_prompt_crowdtap_colors[4]}♺%f'
@@ -93,7 +87,7 @@ function prompt_crowdtap_setup {
 
   # Define prompts.
   PROMPT="[${SSH_TTY:+%n@%m }%~]%(?.%B${_prompt_crowdtap_colors[5]}$%f%b.%B${_prompt_crowdtap_colors[4]}$%f%b) "
-  RPROMPT='${editor_info[overwrite]}${VIM:+" %B${_prompt_crowdtap_colors[5]}V%f%b"}${git_info:+${(e)git_info[rprompt]}} ${_prompt_crowdtap_colors[2]}$ruby_info[version] $node_info[version]'
+  RPROMPT='${editor_info[overwrite]}${VIM:+" %B${_prompt_crowdtap_colors[5]}V%f%b"}${git_info:+${(e)git_info[rprompt]}} ${_prompt_crowdtap_colors[2]}$node_info[version]'
   SPROMPT='zsh: correct ${_prompt_crowdtap_colors[4]}%R%f to ${_prompt_crowdtap_colors[5]}%r%f [nyae]? '
 }
 

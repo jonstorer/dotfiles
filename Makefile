@@ -10,8 +10,8 @@ $(HOME)/.%: %
 
 install: $(TARGETS)
 	git submodule update --init --recursive
-	vim +BundleInstall +qall
-	bash osx
+	vim +PlugInstall +qall
+	@bash osx
 
 uninstall:
 	rm -f $(TARGETS)
@@ -20,7 +20,15 @@ update:
 	git pull
 	git submodule sync
 	git submodule update --init --recursive
-	vim +BundleInstall +qall
-	bash osx
+	vim +PlugUpdate +qall
 
-.PHONY: install uninstall update
+# Update submodules (including vim-plug) to latest from upstream
+update-submodules:
+	git submodule update --init --recursive --remote
+	vim +PlugUpdate +qall
+
+# macOS defaults - safe by default; set OSX_DESTRUCTIVE=1 for Time Machine disable, etc.
+osx:
+	@bash osx
+
+.PHONY: install uninstall update update-submodules osx
