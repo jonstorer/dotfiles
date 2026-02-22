@@ -1,1 +1,1 @@
-dotfiles := tmux-tmate.conf tmate.conf tmux.conf vim vimrc zprezto zlogin zlogout zpreztorc zprofile zshenv zshrc zsh-themes
+dotfiles := asdfrc tmux-tmate.conf tmate.conf tmux.conf vim vimrc zprezto zlogin zlogout zpreztorc zprofile zshenv zshrc zsh-themes
