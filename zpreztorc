@@ -30,15 +30,12 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'syntax-highlighting' \
   'archive' \
-  'fasd' \
   'git' \
   'history-substring-search' \
   'node' \
   'osx' \
   'prompt' \
-  'rails' \
   'rsync' \
-  'ruby' \
   'tmux'
 
 # To enable key bindings, add the following to zpreztorc, and replace 'map'

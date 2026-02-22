@@ -1,118 +1,139 @@
-# Dotfile config
+# Dotfiles
 
-## Why a common dotfile config?
+Shell, editor, and system configuration. Works together with the [laptop](https://github.com/jonstorer/laptop) script for full machine setup.
 
-* To be on the same page
-* Unleash TMUX and VIM productivity power
+## Contents
 
-## What's inside?
-* A solid VIM config
-* A solid TMUX config
-* Extra dotfiles (ackrc, irbrc, gemrc)
-
-See below for further details
+| Component | Description |
+|-----------|-------------|
+| **zsh / Prezto** | Shell config with Prezto framework. Custom themes in `zsh-themes/`. |
+| **Vim** | vim-plug managed plugins: NERDTree, Fugitive, ALE (linting), CtrlP, vim-airline, etc. |
+| **Tmux** | Config shared with tmate. Uses `Ctrl-e` as prefix; `Alt` for pane navigation. |
+| **macOS** | `osx` script applies system defaults (Finder, Dock, Safari, iTerm, etc.). |
 
 ## Install
-1. clone this repository
-2. cd into the repository
-3. specify the dotfiles you want to use in the `MANIFEST` file (by default everything is installed)
-4. run `git submodule init`
-5. run `git submodule update`
-6. run `make install`
 
-## TMUX config
+### With the laptop script (recommended)
 
-iTerm Users: You need to set `Option / Alt` keys as a meta key in your terminal application.
+1. Run laptop first to install Homebrew, vim, tmux, zsh, asdf, Node.js, etc.:
 
-- iTerm:  
-    Preferences > Profiles > Default > Keys > Left option key acts as `+ Esc`
-    Preferences > Profiles > Default > Keys > Right option key acts as `+ Esc`
+   ```sh
+   curl -fsS 'https://raw.githubusercontent.com/jonstorer/laptop/main/mac' | sh
+   ```
 
-Key Bindings
--------------
+2. Clone and install dotfiles:
 
-`Alt + E` Prefix (you probably won't need it)  
+   ```sh
+   git clone https://github.com/jonstorer/dotfiles.git ~/dotfiles
+   cd ~/dotfiles
+   make install
+   ```
 
-The following key bindings do not require you to send the prefix keystroke:
+3. Ensure asdf is loaded: if laptop appended asdf to `~/.zshrc`, it will be overwritten by the dotfiles symlink. Add to `~/.environmentrc` (sourced by `zprofile`):
 
-`Alt + |` Split vertically  
-`Alt + -` Split horizontally
+   ```sh
+   . "$(brew --prefix asdf)/libexec/asdf.sh"
+   ```
 
-`Alt + H` Go to the left pane  
-`Alt + J` Go to the bottom pane  
-`Alt + K` Go to the top pane  
-`Alt + L` Go to the right pane  
+### Standalone (without laptop)
 
-`Alt + Arrow` Resize pane  
+1. Install prerequisites: zsh, vim, tmux, git.
 
-`Alt + PageUp` Copy mode and page up  
-`Alt + U` Copy mode
-`Alt + I` Paste  
+2. Clone and install:
 
-`Alt + 8` Choose a session to attach  
-`Alt + 9` Cycle left through sessions  
-`Alt + 0` Cycle right through sessions  
+   ```sh
+   git clone https://github.com/jonstorer/dotfiles.git ~/dotfiles
+   cd ~/dotfiles
+   git submodule update --init --recursive
+   make install
+   ```
 
-`Alt + D` Detach  
+## Order of operations
 
-## VIM config
+| Step | What happens |
+|------|---------------|
+| 1. Laptop | Installs tools (vim, tmux, zsh, asdf, Node) and may append asdf to `~/.zshrc`. |
+| 2. Dotfiles `make install` | Symlinks dotfiles into `$HOME`, overwriting `~/.zshrc`. |
+| 3. Asdf | If laptop ran first, its asdf block is gone. Put asdf in `~/.environmentrc` instead. |
 
-### Plugins
+## Updating
 
-* [Molokai](https://github.com/nviennot/molokai)      - This color scheme makes it pretty and gives you kisses { :lipstick: => :kiss: }
-* [NERDTree](https://github.com/scrooloose/nerdtree)  - Filesystem explorer - use `^g` to toggle it
-* [Rails.vim](https://github.com/tpope/vim-rails)     - Navigate Rails project easily - `:help rails-navigation`
-* [Fugitive](https://github.com/tpope/vim-fugitive)   - Deep git integration :octocat:
-* [Tabular](https://github.com/godlygeek/tabular.git) - Alignment plugin (e.g. =>, |, :, ...)
-* [NerdCommenter](https://github.com/scrooloose/nerdcommenter.git) - Comment efficiently single or multiple lines
-* [QuickFixSigns](https://github.com/tomtom/quickfixsigns_vim.git) - Is responsible for these usefull +/- signs on the left side (live diff with git index)
-* [Syntastic](https://github.com/scrooloose/syntastic.git) - Syntax checker, yells when you write mistakes :horse:
-* [Endwise](https://github.com/tpope/vim-endwise.git) - Adds necessary end to functions and statements in ruby
-* [Vim-ruby](https://github.com/vim-ruby/vim-ruby.git) - syntax highlighting for ruby files
-* [Vim-coffee-script](https://github.com/kchmck/vim-coffee-script.git) - syntax highlighting for coffee script files
-* [MiniBufExplorer](https://github.com/fholgado/minibufexpl.vim.git) - interactive buffer list on demand bound on `<leader>l` (also binds ^h,^j,^k,^l to move around windows)
-* [Scss-syntax](https://github.com/cakebaker/scss-syntax.vim) - Adds SASS syntax highlighting
-* [Less-css](https://github.com/groenewege/vim-less.git) - colors for LESS CSS files
-* [Supertab](https://github.com/tsaleh/vim-supertab.git) - Tab completion
-* [vim-cucumber-align-pipes](https://github.com/quentindecock/vim-cucumber-align-pipes.git) - Aligns pipes while you are actually typing them in cucumber features
-* [screen plugin on Github](https://github.com/ervandew/screen) - [screen plugin on vim website](http://www.vim.org/scripts/script.php?script_id=2711) - Screen/Tmux integration
-* [ctrl+p](https://github.com/kien/ctrlp.vim) - Fuzzy finder
+```sh
+cd ~/dotfiles
+make update
+```
 
-### plugins - under the hood
+To pull vim-plug and other submodules to their latest upstream commits:
 
-* [Vundle](https://github.com/gmarik/vundle) - VIM plugin management
+```sh
+make update-submodules
+```
+
+This updates submodule pointers; you may want to commit those changes.
+
+## Migrating from Vundle
+
+If you're upgrading from the previous Vundle-based setup:
+
+```sh
+cd ~/dotfiles
+git submodule deinit -f vim/bundle/vundle 2>/dev/null || true
+git rm -f vim/bundle/vundle 2>/dev/null || true
+rm -rf .git/modules/vim/bundle/vundle 2>/dev/null || true
+make install
+```
 
 ## Customization
 
-Please put your custom setting in a `.custom.vim` file at the root of the dotfile directory
+- **Vim**: `~/.custom.vim`
+- **Zsh/Prezto**: `~/.zpreztorc-mine` (sourced by zpreztorc)
+- **Environment/aliases**: `~/.environmentrc`, `~/.aliasrc` (sourced by zprofile)
 
-## Cheat sheet
+## macOS defaults (osx script)
 
-### ctrl + p
+Safe defaults run automatically during `make install`. Destructive options are opt-in:
 
-* Press `<F6>` to purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
-* Press `<c-f>` and `<c-b>` to cycle between modes.
-* Press `<c-d>` to switch to filename only search instead of full path.
-* Press `<c-r>` to switch to regexp mode.
-* Use `<c-n>`, `<c-p>` to select the next/previous string in the prompt's history.
-* Use `<c-y>` to create a new file and its parent directories.
-* Use `<c-z>` to mark/unmark multiple files and `<c-o>` to open them.
+```sh
+# Safe only (default)
+make osx
 
-If you need more information, please use `:help ctrlp` within vim
+# Include destructive changes (disables Time Machine, etc.)
+OSX_DESTRUCTIVE=1 make osx
+```
 
-### Fugitive
+## Tmux
 
-These are really good videos showcasing Fugitive functionalities
+**iTerm**: Set Option/Alt as Meta: Preferences → Profiles → Keys → Left/Right option key → `+ Esc`.
 
-* [#1 - A complement to command line git](http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/)
-* [#2 - Fugitive vim working with the git index](http://vimcasts.org/episodes/fugitive-vim-working-with-the-git-index/)
-* [#3 - Resolving merge conflicts with vimdiff](http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/)
-* [#4 - Browsing the git object database](http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/)
-* [#5 - The history of a git repository](http://vimcasts.org/episodes/fugitive-vim-exploring-the-history-of-a-git-repository/)
+**Key bindings:**
+
+| Keys | Action |
+|------|--------|
+| `Ctrl-e` | Prefix |
+| `Alt-\|` | Split vertically |
+| `Alt--` | Split horizontally |
+| `Alt-h/j/k/l` | Navigate panes |
+| `Alt-Arrow` | Resize pane |
+| `Alt-PageUp` | Copy mode + page up |
+| `Alt-u` | Copy mode |
+| `Alt-i` | Paste |
+| `Alt-8/9/0` | Session pick / cycle |
+| `Alt-d` | Detach |
+
+## Vim
+
+### Plugins
+
+- **NERDTree** – File tree: `\`, `\|` (find current file), `Ctrl-g`
+- **CtrlP** – Fuzzy finder: `F6` clear cache, `,m` recent files
+- **ALE** – Linting: `,t` toggle, `,y` toggle buffer, `,k`/`,j` prev/next issue
+- **Fugitive** – Git: `:Gstatus`, `:Gdiff`, etc.
+- **Ag** – Search: `,f`
+
+### Customization
+
+Put overrides in `~/.custom.vim`.
 
 ## Credits
 
-I would like to thank these guys, this config was largely inspired by their work:
-
-- [Joshua Clayton](https://github.com/joshuaclayton/dotfiles)
-- [Nicolas Viennot](https://github.com/nviennot/vim-config)
+Inspired by [Joshua Clayton](https://github.com/joshuaclayton/dotfiles) and [Nicolas Viennot](https://github.com/nviennot/vim-config).
