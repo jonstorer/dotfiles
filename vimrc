@@ -186,7 +186,4 @@ autocmd BufWritePre *.m,*.h,*.c,*.mm,*.cpp,*.hpp call StripTrailingWhitespace()
 autocmd BufWritePre *.coffee,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml call StripTrailingWhitespace()
 autocmd BufWritePre *.java,*.php call StripTrailingWhitespace()
 
-" tmate.conf has tmux syntax
-au BufNewFile,BufRead,BufReadPost tmate.conf set syntax=tmux
-
 set nowrap
