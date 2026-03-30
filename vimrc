@@ -49,15 +49,14 @@ filetype plugin indent on
 " COLORS
 
 syntax on
-filetype plugin indent on
+
+if $TERM =~ '256color'
+  set t_Co=256
+elseif $TERM =~ '^xterm$'
+  set t_Co=256
+endif
 
 colorscheme molokai
-
-if $term =~ '256color'
-  set t_co=256
-elseif $term =~ '^xterm$'
-  set t_co=256
-endif
 
 set nocursorline                " Fixes lag with syntax highlighting
 set number
@@ -92,7 +91,7 @@ map <Leader>ss :setlocal spell!<cr>
 set laststatus=2
 set encoding=utf-8
 
-set list!
+set list
 set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
 
 set directory=/tmp

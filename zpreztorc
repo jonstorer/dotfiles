@@ -33,7 +33,7 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'history-substring-search' \
   'node' \
-  'osx' \
+  'macos' \
   'prompt' \
   'rsync' \
   'tmux'

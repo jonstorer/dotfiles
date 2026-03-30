@@ -22,6 +22,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.environmentrc" ]]; then
   source "${ZDOTDIR:-$HOME}/.environmentrc"
 fi
 
-if [[ -s "$HOME/.bin" ]]; then
+if [[ -d "$HOME/.bin" ]]; then
   export PATH="$HOME/.bin:$PATH"
 fi
