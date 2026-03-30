@@ -8,8 +8,7 @@ Shell, editor, and system configuration. Works together with the [laptop](https:
 |-----------|-------------|
 | **zsh / Prezto** | Shell config with Prezto framework. Custom themes in `zsh-themes/`. |
 | **Vim** | vim-plug managed plugins: NERDTree, Fugitive, ALE (linting), CtrlP, vim-airline, etc. |
-| **Tmux** | Config shared with tmate. Uses `Ctrl-e` as prefix; `Alt` for pane navigation. |
-| **macOS** | `osx` script applies system defaults (Finder, Dock, Safari, iTerm, etc.). |
+| **Tmux** | Uses `Ctrl-e` as prefix; `Alt` for pane navigation and splits. |
 
 ## Install
 
@@ -83,18 +82,6 @@ make install
 - **Vim**: `~/.custom.vim`
 - **Zsh/Prezto**: `~/.zpreztorc-mine` (sourced by zpreztorc)
 - **Environment/aliases**: `~/.environmentrc`, `~/.aliasrc` (sourced by zprofile)
-
-## macOS defaults (osx script)
-
-Safe defaults run automatically during `make install`. Destructive options are opt-in:
-
-```sh
-# Safe only (default)
-make osx
-
-# Include destructive changes (disables Time Machine, etc.)
-OSX_DESTRUCTIVE=1 make osx
-```
 
 ## Tmux
 
