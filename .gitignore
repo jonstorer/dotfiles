@@ -4,7 +4,8 @@
 custom.vim
 *.sw[nomp]
 .*DS_Store
-# vim-plug: installed plugins (downloaded by PlugInstall)
+# vim-plug: the plugin manager itself and installed plugins
+vim/autoload/vim-plug/
 vim/plugged/
 vim/viminfo
 # legacy Vundle (no longer used)
