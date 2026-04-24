@@ -96,7 +96,11 @@ set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
 
 set directory=/tmp
 set mouse=a
-set clipboard=unnamed
+if has('mac')
+  set clipboard=unnamed
+else
+  set clipboard=unnamedplus
+endif
 
 set foldmethod=syntax
 set foldnestmax=10
