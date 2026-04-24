@@ -47,6 +47,11 @@ path=(
   $path
 )
 
+# On Linux, npm global packages are installed to ~/.npm-global
+if [[ "$OSTYPE" != darwin* ]] && [[ -d "$HOME/.npm-global/bin" ]]; then
+  path=($HOME/.npm-global/bin $path)
+fi
+
 #
 # Less
 #
