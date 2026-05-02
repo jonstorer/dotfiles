@@ -23,9 +23,8 @@ Shell, editor, and system configuration. Works together with the [laptop](https:
 2. Clone and install dotfiles:
 
    ```sh
-   git clone https://github.com/jonstorer/dotfiles.git ~/dotfiles
-   cd ~/dotfiles
-   make install
+   git clone https://github.com/jonstorer/dotfiles.git ~/.dotfiles
+   ~/.dotfiles/install.sh
    ```
 
 3. Dotfiles loads asdf from `zprofile` and provides `~/.asdfrc` (`.nvmrc` / `.node-version` support). No extra setup needed.
@@ -37,10 +36,8 @@ Shell, editor, and system configuration. Works together with the [laptop](https:
 2. Clone and install:
 
    ```sh
-   git clone https://github.com/jonstorer/dotfiles.git ~/dotfiles
-   cd ~/dotfiles
-   git submodule update --init --recursive
-   make install
+   git clone https://github.com/jonstorer/dotfiles.git ~/.dotfiles
+   ~/.dotfiles/install.sh
    ```
 
 ## Order of operations
@@ -48,19 +45,18 @@ Shell, editor, and system configuration. Works together with the [laptop](https:
 | Step | What happens |
 |------|---------------|
 | 1. Laptop | Installs tools (vim, tmux, zsh, asdf, Node). Does not modify .zshrc or .asdfrc (managed by dotfiles). |
-| 2. Dotfiles `make install` | Symlinks configs, loads asdf from zprofile, provides ~/.asdfrc. |
+| 2. Dotfiles `install.sh` | Symlinks configs, loads asdf from zprofile, provides ~/.asdfrc. |
 
 ## Updating
 
 ```sh
-cd ~/dotfiles
-make update
+~/.dotfiles/install.sh update
 ```
 
 To pull vim-plug and other submodules to their latest upstream commits:
 
 ```sh
-make update-submodules
+~/.dotfiles/install.sh update-submodules
 ```
 
 This updates submodule pointers; you may want to commit those changes.
@@ -70,11 +66,11 @@ This updates submodule pointers; you may want to commit those changes.
 If you're upgrading from the previous Vundle-based setup:
 
 ```sh
-cd ~/dotfiles
+cd ~/.dotfiles
 git submodule deinit -f vim/bundle/vundle 2>/dev/null || true
 git rm -f vim/bundle/vundle 2>/dev/null || true
 rm -rf .git/modules/vim/bundle/vundle 2>/dev/null || true
-make install
+~/.dotfiles/install.sh
 ```
 
 ## Customization
