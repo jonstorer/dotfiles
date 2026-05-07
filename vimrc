@@ -2,8 +2,9 @@ set nocompatible
 filetype off
 
 " vim-plug - plugin manager
-let plug_path = expand('~/.vim/autoload/plug.vim')
+let plug_path = expand('~/.vim/autoload/vim-plug/plug.vim')
 if filereadable(plug_path)
+execute 'source ' . plug_path
 call plug#begin('~/.vim/plugged')
 
 " Essentials
@@ -42,7 +43,7 @@ Plug 'spf13/vim-autoclose'
 
 call plug#end()
 else
-  echo 'Run "make install" to download vim-plug and install plugins.'
+  echo 'Run "./install.sh" to download vim-plug and install plugins.'
 endif
 filetype plugin indent on
 

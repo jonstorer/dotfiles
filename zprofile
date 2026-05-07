@@ -25,3 +25,7 @@ fi
 if [[ -d "$HOME/.bin" ]]; then
   export PATH="$HOME/.bin:$PATH"
 fi
+
+if [[ -s "${HOME}/.zprofile.local" ]]; then
+  source "${HOME}/.zprofile.local"
+fi
