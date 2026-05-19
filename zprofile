@@ -12,6 +12,9 @@ elif [[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]]; then
   . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 elif [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then
   . "/usr/local/opt/asdf/libexec/asdf.sh"
+elif command -v asdf >/dev/null 2>&1; then
+  # asdf 0.16+ (Go rewrite) ships no asdf.sh — just add shims to PATH.
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fi
 
 if [[ -s "${ZDOTDIR:-$HOME}/.aliasrc" ]]; then
